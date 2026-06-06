@@ -89,7 +89,7 @@ export default function RecentAgentsTable() {
                 )}
               </td>
               <td className="p-4">
-                <Link href={`/profile/${agent.id}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center gap-2">
+                <Link href={`/agents/${agent.id}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center gap-2">
                   <EyeIcon className="w-4 h-4" /> Voir
                 </Link>
               </td>
