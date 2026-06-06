@@ -56,7 +56,7 @@ export default async function AgentsPage({ searchParams }: { searchParams?: Prom
       <main className="mx-auto grid max-w-7xl gap-6 px-4 py-8 lg:grid-cols-[280px_1fr] lg:px-6">
         <Sidebar />
 
-        <section className="space-y-6">
+        <section className="space-y-6 lg:mx-auto">
           <div className="card-surface p-6">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div>

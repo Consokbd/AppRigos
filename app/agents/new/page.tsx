@@ -6,6 +6,8 @@ import { createQRCode } from '@/lib/qrcode'
 import { getServerAuthSession } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 
+export const dynamic = 'force-dynamic'
+
 async function createAgent(formData: FormData) {
   'use server'
   const matricule = formData.get('matricule') as string
@@ -57,7 +59,7 @@ export default async function NewAgentPage() {
       <Navbar />
       <main className="mx-auto grid max-w-7xl gap-6 px-4 py-8 lg:grid-cols-[280px_1fr] lg:px-6">
         <Sidebar />
-        <section className="space-y-6">
+        <section className="space-y-6 lg:mx-auto">
           <div className="card-surface p-6">
             <h1 className="text-3xl font-semibold text-slate-900">Nouvel agent</h1>
             <p className="mt-2 text-slate-600">Créez une fiche agent et générez automatiquement sa carte de service.</p>

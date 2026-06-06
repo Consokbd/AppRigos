@@ -7,6 +7,8 @@ import { createQRCode } from '@/lib/qrcode'
 import { getServerAuthSession } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 
+export const dynamic = 'force-dynamic'
+
 async function updateAgent(formData: FormData) {
   'use server'
   const id = formData.get('id') as string
@@ -70,7 +72,7 @@ export default async function AgentDetailsPage({ params }: { params: Promise<{ i
       <main className="mx-auto grid max-w-7xl gap-6 px-4 py-8 lg:grid-cols-[280px_1fr] lg:px-6">
         <Sidebar />
 
-        <section className="space-y-6">
+        <section className="space-y-6 lg:mx-auto">
           <div className="card-surface p-6">
             <h1 className="text-3xl font-semibold text-slate-900">Fiche agent</h1>
             <p className="mt-2 text-slate-600">Modifiez les informations et consultez le QR Code du profil.</p>

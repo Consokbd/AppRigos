@@ -6,6 +6,8 @@ import CardActions from '@/components/CardActions'
 import { redirect } from 'next/navigation'
 import { createQRCode } from '@/lib/qrcode'
 
+export const dynamic = 'force-dynamic'
+
 export default async function CardPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await getServerAuthSession()
   if (!session) {
@@ -37,7 +39,7 @@ export default async function CardPage({ params }: { params: Promise<{ id: strin
       <Navbar />
       <main className="mx-auto grid max-w-7xl gap-6 px-4 py-8 lg:grid-cols-[280px_1fr] lg:px-6">
         <Sidebar />
-        <section className="space-y-6 lg:justify-self-center lg:max-w-5xl">
+        <section className="space-y-6 lg:mx-auto">
           <div className="card-surface mx-auto w-full max-w-5xl p-6">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div>
@@ -56,7 +58,7 @@ export default async function CardPage({ params }: { params: Promise<{ id: strin
               <div className="service-card-inner">
                 <div className="card-top">
                   <div className="card-brand">
-                    <img src="/logo.jpeg" alt="RIGOS" className="card-logo" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
+                    <img src="/logo.jpeg" alt="RIGOS" className="card-logo" />
                     <div className="card-brand-title">
                       <p className="text-sm uppercase tracking-[0.35em] text-slate-400">Carte de service</p>
                       <p className="text-xl font-semibold text-slate-900">RIGOS SARL</p>
