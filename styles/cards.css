@@ -1,0 +1,244 @@
+/* Styles spécifiques à la carte de service - utilises @apply pour regrouper les utilitaires Tailwind */
+/* Styles classiques pour la carte de service et composants associés
+   Ce fichier utilise du CSS standard (pas d'@apply ni d'@layer)
+   Les couleurs et dimensions sont approximatives pour reproduire
+   l'apparence précédente basée sur Tailwind. Les commentaires
+   sont en français pour expliquer chaque bloc. */
+
+:root {
+  /* Couleurs principales utilisées dans l'app */
+  --color-primary: #1AA8C5; /* couleur logo RIGOS */
+  --color-primary-10: rgba(26,168,197,0.12);
+  --color-surface: #F3FBFC;
+  --color-muted: #64748B;
+  --color-border: #D9E5EA;
+  --color-success: #16A34A;
+}
+
+.card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .card-top { flex-direction: row; align-items: flex-start; justify-content: space-between; }
+}
+
+.card-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card-brand-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.card-detail-group { display: grid; gap: 0.85rem; }
+.card-detail-row { display: flex; gap: 0.75rem; align-items: baseline; }
+.card-label { font-size: 0.75rem; letter-spacing: 0.26em; text-transform: uppercase; color: #64748B; margin: 0; }
+.card-value { font-size: 1.3rem; font-weight: 700; color: #0F172A; margin: 0; }
+.card-value.small { font-size: 1rem; color: #475569; }
+.card-divider { height: 1px; background: rgba(15,23,42,0.08); margin: 1.5rem 0; border: none; }
+
+.card-footer-banner {
+  border-radius: 28px;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .card-footer-banner { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+
+.card-footer-block { display: flex; flex-direction: column; gap: 0.35rem; }
+.card-footer-label { font-size: 0.75rem; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255,255,255,0.88); margin: 0; }
+.card-footer-text { font-size: 1rem; font-weight: 700; margin: 0; }
+
+.dashboard-hero { display: grid; gap: 1.5rem; }
+@media (min-width: 1024px) { .dashboard-hero { grid-template-columns: 1.7fr 1fr; align-items: center; } }
+.dashboard-hero-card { background: rgba(26,168,197,0.08); border: 1px solid rgba(26,168,197,0.22); border-radius: 24px; padding: 1.5rem; }
+.dashboard-hero-card p { margin: 0; }
+.dashboard-hero-card-title { color: #0F172A; font-size: 0.95rem; letter-spacing: 0.22em; text-transform: uppercase; }
+.dashboard-hero-card-value { margin-top: 0.5rem; font-size: 2rem; font-weight: 700; color: #0F172A; }
+
+.accent-secondary { background: rgba(26,168,197,0.12); color: #0F4C81; }
+
+/* --- Carte principale --- */
+.service-card {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 56rem; /* ≈ max-w-5xl */
+  overflow: hidden;
+  border-radius: 32px;
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+  min-height: 54mm; /* dimension carte physique */
+}
+
+/* conteneur intérieur avec fond dégradé doux */
+.service-card-inner {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+  background: radial-gradient(circle at top left, rgba(15,76,129,0.08) 0%, transparent 30%), linear-gradient(180deg, #f8fafc 0%, #ffffff 45%);
+}
+
+/* entête de la carte : photo + nom */
+.card-header {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 32px;
+  background: rgba(255,255,255,0.85);
+  padding: 1.5rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+@media (min-width: 1024px) {
+  .card-header { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+
+.card-photo {
+  position: relative;
+  height: 8rem; /* 32 */
+  width: 8rem;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid var(--color-border);
+  background: #F1F5F9;
+  box-shadow: 0 2px 6px rgba(2,6,23,0.04);
+}
+
+.card-photo img { width: 100%; height: 100%; object-fit: cover; display:block }
+
+/* Logo placé dans la carte (utiliser public/assets/logo.png) */
+.card-logo {
+  display:block;
+  width: 180px; /* largeur approximative du logo sur la carte */
+  height: auto;
+  margin-bottom: 0.75rem;
+}
+
+.card-photo-placeholder { display:flex; align-items:center; justify-content:center; font-size:1.75rem; font-weight:700; color:#64748B; height:100%; }
+
+.card-header-info { gap: 0.5rem; display:flex; flex-direction:column }
+
+.card-header-info p { margin:0 }
+
+.card-qr-panel {
+  display: grid;
+  gap: 1rem;
+  border-radius: 28px;
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(2,6,23,0.03);
+  justify-items: center;
+}
+
+.card-qr { display:flex; align-items:center; justify-content:center; height:11rem; width:11rem; border-radius:18px; background:#F1F5F9 }
+.card-qr img { max-width:90%; height:auto }
+
+/* grille principale sous l'entête */
+.card-grid { display: grid; gap: 1.5rem; }
+@media (min-width: 1024px) {
+  .card-grid { grid-template-columns: 1.05fr 0.95fr; }
+}
+
+.card-side-blue {
+  border-radius: 32px;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(15,76,129,0.14);
+}
+
+.card-side-blue .badge { background: rgba(255,255,255,0.12); padding:0.5rem; border-radius:12px }
+
+.card-actions-center { margin-top:1.5rem; display:flex; gap:0.75rem; flex-direction:column }
+@media (min-width:640px){ .card-actions-center { flex-direction:row; align-items:center; justify-content:center } }
+
+/* --- Styles pour les composants Agent --- */
+.agent-card { border-radius: 20px; border:1px solid var(--color-border); background:#fff; padding:1.25rem; box-shadow:0 6px 18px rgba(15,23,42,0.06); transition: transform .12s ease, box-shadow .12s ease }
+.agent-card:hover { transform: translateY(-2px); box-shadow:0 12px 32px rgba(15,23,42,0.08) }
+
+.agent-card-inner { display:flex; gap:1rem; flex-direction:column }
+@media (min-width:1024px){ .agent-card-inner { flex-direction:row; align-items:flex-start; justify-content:space-between } }
+
+.agent-card-meta { display:flex; flex-direction:column; gap:0.75rem }
+.agent-card-service { display:flex; gap:0.5rem; align-items:center; color:var(--color-muted); font-size:0.9rem }
+.agent-card-name { font-size:1.125rem; font-weight:600; color:#0f172a }
+.agent-card-fonction { margin-top:0.25rem; font-size:0.9rem; color:#475569 }
+.agent-card-matricule { color:#64748b; font-size:0.9rem }
+.agent-card-actions { display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center }
+
+/* --- Formulaire agent (styles basiques) --- */
+.agent-form { display:block }
+.agent-form-section { background:#F8FAFC; padding:1.25rem; border-radius:16px; margin-bottom:1rem }
+.agent-form-title { color:var(--color-muted); font-size:0.875rem; text-transform:uppercase; letter-spacing:0.12em }
+.agent-form-subtitle { margin-top:0.5rem; font-size:1.125rem; font-weight:600; color:#0f172a }
+.agent-form-grid-2 { display:grid; gap:1rem; grid-template-columns:1fr }
+@media (min-width:1024px){ .agent-form-grid-2 { grid-template-columns:repeat(2,1fr) } }
+.agent-form-grid-3 { display:grid; gap:1rem; grid-template-columns:1fr }
+@media (min-width:1024px){ .agent-form-grid-3 { grid-template-columns:repeat(3,1fr) } }
+
+.agent-input, .agent-input-muted, .agent-select {
+  width:100%;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  padding: 0.75rem 1rem;
+  font-size:0.95rem;
+  background: #fff;
+  outline: none;
+}
+.agent-input-muted { background: #F1F5F9 }
+.agent-select { background: #F1F5F9 }
+.agent-input:focus, .agent-input-muted:focus, .agent-select:focus { box-shadow: 0 0 0 4px rgba(15,76,129,0.06); border-color:var(--color-primary) }
+
+.agent-form-actions { display:flex; justify-content:flex-end }
+.btn-primary { display:inline-flex; align-items:center; justify-content:center; border-radius:14px; background:var(--color-primary); color:#fff; padding:0.6rem 1rem; font-weight:600 }
+.btn-outline { display:inline-flex; align-items:center; justify-content:center; border-radius:14px; border:1px solid rgba(15,23,42,0.08); background:#fff; color:#334155; padding:0.5rem 0.8rem; font-weight:600 }
+
+/* --- Navbar et Sidebar --- */
+.navbar { position: sticky; top:0; z-index:20; border-bottom:1px solid var(--color-border); background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); }
+.navbar-inner { margin-left:auto; margin-right:auto; max-width:1120px; display:flex; align-items:center; justify-content:space-between; padding:1rem; }
+.navbar-title { font-size:0.875rem; font-weight:700; text-transform:uppercase; letter-spacing:0.18em; color:var(--color-primary) }
+.btn-logout { border-radius:14px; border:1px solid rgba(148,163,184,0.3); background:#fff; padding:0.5rem 1rem; font-size:0.95rem; color:#334155 }
+
+.sidebar { display:none; width:18rem; flex-direction:column; gap:1rem; border-radius:20px; border:1px solid var(--color-border); background:#fff; padding:1.25rem; box-shadow:0 6px 18px rgba(15,23,42,0.06) }
+@media (min-width:1280px){ .sidebar { display:flex } }
+.sidebar-title { color:var(--color-muted); text-transform:uppercase; letter-spacing:0.12em }
+.nav-link { display:block; border-radius:14px; padding:0.6rem 1rem; font-size:0.95rem; color:#334155; transition:background .12s ease }
+.nav-link:hover { background:#F1F5F9 }
+
+.navbar-brand { display: flex; align-items: center; gap: 1rem; }
+.navbar-logo { width: 48px; height: 48px; border-radius: 0.75rem; object-fit: contain; background: #fff; padding: 0.25rem; box-shadow: 0 10px 20px rgba(15, 76, 129, 0.08); }
+
+/* --- Dashboard stats --- */
+.stats-grid { display:grid; gap:1rem }
+@media (min-width:1024px){ .stats-grid { grid-template-columns: repeat(4, 1fr) } }
+.stat-item { padding:1.25rem; border-radius:16px; background:#fff; border:1px solid var(--color-border); box-shadow:0 6px 18px rgba(15,23,42,0.04) }
+.stat-badge { display:inline-flex; border-radius:9999px; padding:0.25rem 0.75rem; font-size:0.75rem; font-weight:700 }
+.accent-primary { background: rgba(15,76,129,0.1); color:var(--color-primary) }
+.accent-success { background: rgba(16,185,129,0.1); color:var(--color-success) }
+.accent-red { background: rgba(255,224,230,1); color:#BE123C }
+.accent-secondary { background: rgba(244,221,255,0.1); color:#7C3AED }
+
+/* --- QR Code generator --- */
+.qr-generator { display:inline-flex; flex-direction:column; align-items:center; gap:0.75rem; border-radius:16px; border:1px solid var(--color-border); background:#fff; padding:1rem; box-shadow:0 6px 18px rgba(15,23,42,0.04) }
+.qr-generator img { max-width:100% }
+
+
+

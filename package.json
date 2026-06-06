@@ -1,0 +1,34 @@
+{
+  "name": "app-rigos",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.15.0",
+    "@tailwindcss/typography": "^0.5.9",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
+    "next": "^15.3.0",
+    "next-auth": "^4.24.14",
+    "qrcode": "^1.5.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-qr-code": "^2.0.21"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@types/html2canvas": "^1.0.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.35",
+    "prisma": "^5.15.0",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.6.2"
+  }
+}

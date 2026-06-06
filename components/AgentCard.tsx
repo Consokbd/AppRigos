@@ -1,0 +1,58 @@
+'use client'
+
+import Link from 'next/link'
+
+interface AgentCardProps {
+  agent: {
+    id: string
+    matricule: string
+    nom: string
+    postnom?: string | null
+    prenom?: string | null
+    fonction: string
+    service: string
+    statut: string
+  }
+  onDelete: (id: string) => void
+}
+
+export default function AgentCard({ agent, onDelete }: AgentCardProps) {
+  return (
+    <article className="agent-card">
+      <div className="agent-card-inner">
+        <div className="agent-card-meta">
+          <div className="agent-card-service">
+            <span className="inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
+            <span>{agent.service}</span>
+          </div>
+          <div>
+            <h3 className="agent-card-name">{agent.nom} {agent.postnom ?? ''} {agent.prenom ?? ''}</h3>
+            <p className="agent-card-fonction">{agent.fonction}</p>
+          </div>
+          <p className="agent-card-matricule">
+            Matricule: <span className="font-semibold text-slate-900">{agent.matricule}</span>
+          </p>
+        </div>
+
+        <div className="agent-card-actions">
+          <span className={`rounded-full px-3 py-1 text-xs font-semibold ${agent.statut === 'ACTIF' ? 'bg-success/10 text-success' : 'bg-red-100 text-red-700'}`}>
+            {agent.statut}
+          </span>
+          <Link href={`/agents/${agent.id}`} className="btn-primary">
+            Profil
+          </Link>
+          <Link href={`/cards/${agent.id}`} className="btn-outline">
+            Carte
+          </Link>
+          <button
+            type="button"
+            onClick={() => onDelete(agent.id)}
+            className="rounded-2xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-100"
+          >
+            Supprimer
+          </button>
+        </div>
+      </div>
+    </article>
+  )
+}
