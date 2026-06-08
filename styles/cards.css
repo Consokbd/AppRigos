@@ -258,5 +258,267 @@
 .qr-generator { display:inline-flex; flex-direction:column; align-items:center; gap:0.75rem; border-radius:16px; border:1px solid var(--color-border); background:#fff; padding:1rem; box-shadow:0 6px 18px rgba(15,23,42,0.04) }
 .qr-generator img { max-width:100% }
 
+/* --- RIGOS PVC print card --- */
+.rigos-id-card {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 980px);
+  aspect-ratio: 85.6 / 54;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 47% 23%, rgba(15, 23, 42, 0.045) 0 2px, transparent 2.5px) 0 0 / 16px 16px,
+    linear-gradient(110deg, #f7f7f8 0%, #ffffff 45%, #f1f2f5 100%);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.16);
+  color: #06080d;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.rigos-card-bg-top {
+  position: absolute;
+  left: -7%;
+  top: -27%;
+  width: 38%;
+  height: 46%;
+  border-radius: 0 0 64% 0;
+  background: rgba(226, 229, 235, 0.86);
+  z-index: -1;
+}
+
+.rigos-card-bg-right {
+  position: absolute;
+  right: -6%;
+  top: 16%;
+  width: 23%;
+  height: 56%;
+  border-left: 12px solid rgba(26, 168, 197, 0.8);
+  border-radius: 55% 0 0 55%;
+  background: rgba(229, 231, 236, 0.78);
+  transform: rotate(3deg);
+  z-index: -1;
+}
+
+.rigos-card-dot-field {
+  position: absolute;
+  right: -2%;
+  bottom: -7%;
+  width: 28%;
+  height: 41%;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.16) 0 2px, transparent 2.6px) 0 0 / 14px 14px,
+    linear-gradient(135deg, rgba(4, 114, 150, 0.12), rgba(4, 114, 150, 0));
+  z-index: 2;
+}
+
+.rigos-card-logo {
+  position: absolute;
+  left: 6.6%;
+  top: 5.6%;
+  width: 28.5%;
+  height: 13%;
+}
+
+.rigos-card-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.rigos-card-photo {
+  position: absolute;
+  left: 6.6%;
+  top: 22.6%;
+  width: 22.6%;
+  height: 41.8%;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  background: #eef1f4;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.04);
+}
+
+.rigos-card-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.rigos-card-photo div {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: clamp(0.8rem, 1.8vw, 1.25rem);
+  font-weight: 800;
+}
+
+.rigos-card-details {
+  position: absolute;
+  left: 32.5%;
+  top: 30.4%;
+  width: 34.5%;
+  display: grid;
+  gap: clamp(0.52rem, 1.65vw, 1.52rem);
+}
+
+.rigos-card-details p {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: clamp(0.38rem, 0.85vw, 0.85rem);
+  align-items: baseline;
+  margin: 0;
+  font-size: clamp(1rem, 2.35vw, 2.08rem);
+  line-height: 1.08;
+}
+
+.rigos-card-details span {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.rigos-card-details strong {
+  min-width: 0;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.rigos-card-qr {
+  position: absolute;
+  right: 8.8%;
+  top: 26%;
+  width: 20.9%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #118eb4;
+  border-radius: 18px;
+  background: #fff;
+  padding: 1.7%;
+}
+
+.rigos-card-qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.rigos-card-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28.6%;
+  display: grid;
+  grid-template-columns: 17% 1fr;
+  gap: 1%;
+  align-items: center;
+  padding: 0 7%;
+  background: linear-gradient(97deg, #0796bd 0%, #0088ae 48%, #057699 100%);
+  color: #fff;
+}
+
+.rigos-agent-icon {
+  position: relative;
+  width: clamp(54px, 7.5vw, 86px);
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 5px 14px rgba(5, 52, 70, 0.2);
+}
+
+.rigos-agent-head {
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  width: 32%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: #0796bd;
+  transform: translateX(-50%);
+}
+
+.rigos-agent-body {
+  position: absolute;
+  left: 21%;
+  bottom: 15%;
+  width: 58%;
+  height: 39%;
+  border-radius: 45% 45% 10px 10px;
+  background: #0796bd;
+}
+
+.rigos-footer-copy {
+  min-width: 0;
+}
+
+.rigos-footer-title,
+.rigos-footer-matricule,
+.rigos-footer-validity {
+  margin: 0;
+}
+
+.rigos-footer-title {
+  font-size: clamp(1.1rem, 2.8vw, 2.55rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.rigos-footer-rule {
+  width: 72%;
+  height: 1px;
+  margin: 1.2% 0 1.4%;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.rigos-footer-matricule {
+  font-size: clamp(0.95rem, 2.18vw, 2rem);
+  line-height: 1.05;
+}
+
+.rigos-footer-matricule strong,
+.rigos-footer-validity strong {
+  font-weight: 900;
+}
+
+.rigos-footer-validity {
+  margin-top: 2.5%;
+  font-size: clamp(0.9rem, 2.04vw, 1.9rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+@media print {
+  @page {
+    size: 85.6mm 54mm;
+    margin: 0;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #service-card,
+  #service-card * {
+    visibility: visible;
+  }
+
+  #service-card {
+    position: fixed;
+    inset: 0;
+    width: 85.6mm !important;
+    height: 54mm !important;
+    max-width: none !important;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
 
 

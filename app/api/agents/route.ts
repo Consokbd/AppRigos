@@ -1,8 +1,14 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { createQRCode } from '@/lib/qrcode'
+import { getServerAuthSession } from '@/lib/auth'
 
 export async function GET(request: Request) {
+  const session = await getServerAuthSession()
+  if (!session) {
+    return NextResponse.json({ error: 'Non autorise' }, { status: 401 })
+  }
+
   const url = new URL(request.url)
   const q = url.searchParams.get('q') ?? ''
   const agents = await prisma.agent.findMany({
@@ -20,10 +26,16 @@ export async function GET(request: Request) {
       : {},
     orderBy: { createdAt: 'desc' },
   })
+
   return NextResponse.json(agents)
 }
 
 export async function POST(request: Request) {
+  const session = await getServerAuthSession()
+  if (!session) {
+    return NextResponse.json({ error: 'Non autorise' }, { status: 401 })
+  }
+
   const payload = await request.json()
   const agent = await prisma.agent.create({
     data: {

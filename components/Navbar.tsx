@@ -19,7 +19,7 @@ export default function Navbar() {
           onClick={() => signOut({ callbackUrl: '/login' })}
           className="btn-logout"
         >
-          Déconnexion
+          Deconnexion
         </button>
       </div>
     </header>

@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 
 interface AgentCardProps {
@@ -13,10 +11,12 @@ interface AgentCardProps {
     service: string
     statut: string
   }
-  onDelete: (id: string) => void
+  deleteAction: (formData: FormData) => Promise<void>
 }
 
-export default function AgentCard({ agent, onDelete }: AgentCardProps) {
+export default function AgentCard({ agent, deleteAction }: AgentCardProps) {
+  const fullName = `${agent.nom} ${agent.postnom ?? ''} ${agent.prenom ?? ''}`.trim()
+
   return (
     <article className="agent-card">
       <div className="agent-card-inner">
@@ -26,7 +26,7 @@ export default function AgentCard({ agent, onDelete }: AgentCardProps) {
             <span>{agent.service}</span>
           </div>
           <div>
-            <h3 className="agent-card-name">{agent.nom} {agent.postnom ?? ''} {agent.prenom ?? ''}</h3>
+            <h3 className="agent-card-name">{fullName}</h3>
             <p className="agent-card-fonction">{agent.fonction}</p>
           </div>
           <p className="agent-card-matricule">
@@ -44,13 +44,15 @@ export default function AgentCard({ agent, onDelete }: AgentCardProps) {
           <Link href={`/cards/${agent.id}`} className="btn-outline">
             Carte
           </Link>
-          <button
-            type="button"
-            onClick={() => onDelete(agent.id)}
-            className="rounded-2xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-100"
-          >
-            Supprimer
-          </button>
+          <form action={deleteAction}>
+            <input type="hidden" name="id" value={agent.id} />
+            <button
+              type="submit"
+              className="rounded-2xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-100"
+            >
+              Supprimer
+            </button>
+          </form>
         </div>
       </div>
     </article>

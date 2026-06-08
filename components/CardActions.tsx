@@ -20,37 +20,13 @@ export default function CardActions({ agentId }: CardActionsProps) {
   }
 
   function printCard() {
-    const printWindow = window.open('', '_blank', 'width=900,height=600')
-    if (!printWindow) return
-
-    const cardHtml = document.getElementById('service-card')?.outerHTML
-    if (!cardHtml) return
-
-    printWindow.document.write(`
-      <html>
-        <head>
-          <title>Impression carte de service</title>
-          <style>
-            body{margin:0;display:flex;align-items:center;justify-content:center;height:100vh;background:#f8fafc}
-            #service-card{width:85.6mm;height:54mm;}
-          </style>
-        </head>
-        <body>${cardHtml}</body>
-      </html>
-    `)
-    printWindow.document.close()
-    printWindow.focus()
-    printWindow.print()
+    window.print()
   }
 
   return (
     <div className="card-actions-center">
-      <button
-        type="button"
-        onClick={downloadPdf}
-        className="inline-flex items-center justify-center rounded-2xl bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-secondary"
-      >
-        Télécharger PDF
+      <button type="button" onClick={downloadPdf} className="btn-primary px-5 py-3">
+        Telecharger PDF
       </button>
       <button
         type="button"

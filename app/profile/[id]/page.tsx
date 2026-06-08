@@ -8,7 +8,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
       <div className="min-h-screen bg-surface px-4 py-10">
         <div className="mx-auto max-w-3xl rounded-3xl border border-red-200 bg-red-50 p-8 text-red-800 shadow-soft">
           <h1 className="text-2xl font-semibold">Profil introuvable</h1>
-          <p className="mt-3">Le QR Code ne correspond à aucun agent.</p>
+          <p className="mt-3">Le QR code ne correspond a aucun agent.</p>
         </div>
       </div>
     )
@@ -41,19 +41,19 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
               <ul className="mt-5 space-y-3 text-sm text-slate-600">
                 <li><span className="font-semibold text-slate-900">Matricule :</span> {agent.matricule}</li>
                 <li><span className="font-semibold text-slate-900">Service :</span> {agent.service}</li>
-                <li><span className="font-semibold text-slate-900">Téléphone :</span> {agent.telephone ?? 'Non renseigné'}</li>
-                <li><span className="font-semibold text-slate-900">Email :</span> {agent.email ?? 'Non renseigné'}</li>
+                <li><span className="font-semibold text-slate-900">Telephone :</span> {agent.telephone ?? 'Non renseigne'}</li>
+                <li><span className="font-semibold text-slate-900">Email :</span> {agent.email ?? 'Non renseigne'}</li>
                 <li><span className="font-semibold text-slate-900">Statut :</span> {agent.statut}</li>
               </ul>
             </div>
 
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h2 className="text-xl font-semibold text-slate-900">QR Code</h2>
+              <h2 className="text-xl font-semibold text-slate-900">QR code</h2>
               <div className="mt-6 flex items-center justify-center rounded-3xl bg-slate-100 p-6">
                 {agent.qrCode ? (
-                  <img src={agent.qrCode} alt="QR Code" className="h-44 w-44 object-contain" />
+                  <img src={agent.qrCode} alt="QR code" className="h-44 w-44 object-contain" />
                 ) : (
-                  <p className="text-sm text-slate-500">QR Code non disponible</p>
+                  <p className="text-sm text-slate-500">QR code non disponible</p>
                 )}
               </div>
             </div>

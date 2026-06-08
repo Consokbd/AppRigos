@@ -59,10 +59,10 @@ export default async function NewAgentPage() {
       <Navbar />
       <main className="mx-auto grid max-w-7xl gap-6 px-4 py-8 lg:grid-cols-[280px_1fr] lg:px-6">
         <Sidebar />
-        <section className="space-y-6 lg:mx-auto">
+        <section className="space-y-6">
           <div className="card-surface p-6">
             <h1 className="text-3xl font-semibold text-slate-900">Nouvel agent</h1>
-            <p className="mt-2 text-slate-600">Créez une fiche agent et générez automatiquement sa carte de service.</p>
+            <p className="mt-2 text-slate-600">Creez une fiche agent et generez automatiquement sa carte de service.</p>
           </div>
           <AgentForm action={createAgent} />
         </section>

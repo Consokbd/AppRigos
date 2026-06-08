@@ -1,17 +1,29 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { createQRCode } from '@/lib/qrcode'
+import { getServerAuthSession } from '@/lib/auth'
 
-export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const session = await getServerAuthSession()
+  if (!session) {
+    return NextResponse.json({ error: 'Non autorise' }, { status: 401 })
+  }
+
   const { id } = await params
   const agent = await prisma.agent.findUnique({ where: { id } })
   if (!agent) {
     return NextResponse.json({ error: 'Agent introuvable' }, { status: 404 })
   }
+
   return NextResponse.json(agent)
 }
 
 export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const session = await getServerAuthSession()
+  if (!session) {
+    return NextResponse.json({ error: 'Non autorise' }, { status: 401 })
+  }
+
   const { id } = await params
   const payload = await request.json()
   const agent = await prisma.agent.update({
@@ -40,7 +52,12 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
   return NextResponse.json({ success: true, agent })
 }
 
-export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function DELETE(_request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const session = await getServerAuthSession()
+  if (!session) {
+    return NextResponse.json({ error: 'Non autorise' }, { status: 401 })
+  }
+
   const { id } = await params
   await prisma.agent.delete({ where: { id } })
   return NextResponse.json({ success: true })

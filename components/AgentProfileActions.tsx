@@ -12,15 +12,16 @@ export default function AgentProfileActions({ agentId }: Props) {
     const el = document.getElementById('agent-profile-card')
     if (!el) return
 
-    const canvas = await html2canvas(el, { backgroundColor: null, scale: 2 })
+    const canvas = await html2canvas(el, { backgroundColor: '#ffffff', scale: 2 })
     const imgData = canvas.toDataURL('image/png')
+    const widthMm = canvas.width * 0.264583
+    const heightMm = canvas.height * 0.264583
 
-    // convert px to mm (approx)
-    const pxToMm = (px: number) => px * 0.264583
-    const widthMm = pxToMm(canvas.width)
-    const heightMm = pxToMm(canvas.height)
-
-    const pdf = new jsPDF({ orientation: widthMm > heightMm ? 'landscape' : 'portrait', unit: 'mm', format: [widthMm, heightMm] })
+    const pdf = new jsPDF({
+      orientation: widthMm > heightMm ? 'landscape' : 'portrait',
+      unit: 'mm',
+      format: [widthMm, heightMm],
+    })
     pdf.addImage(imgData, 'PNG', 0, 0, widthMm, heightMm)
     pdf.save(`fiche-agent-${agentId}.pdf`)
   }
@@ -29,33 +30,35 @@ export default function AgentProfileActions({ agentId }: Props) {
     const el = document.getElementById('agent-profile-card')
     if (!el) return
 
-    const printWindow = window.open('', '_blank', 'width=800,height=1000')
+    const printWindow = window.open('', '_blank', 'width=900,height=700')
     if (!printWindow) return
 
-    const html = `
+    printWindow.document.write(`
       <html>
         <head>
           <title>Impression - Fiche agent</title>
           <style>
-            body{margin:0;display:flex;align-items:center;justify-content:center;height:100vh;background:transparent}
-            .print-card{box-shadow: none !important}
+            body{margin:0;padding:24px;background:#f8fafc;font-family:Arial,sans-serif}
           </style>
         </head>
         <body>${el.outerHTML}</body>
-      </html>`
-
-    printWindow.document.write(html)
+      </html>
+    `)
     printWindow.document.close()
     printWindow.focus()
     printWindow.print()
   }
 
   return (
-    <div className="flex gap-3 mt-4">
-      <button onClick={downloadPdf} className="inline-flex items-center justify-center rounded-2xl bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-secondary">
-        Télécharger PDF
+    <div className="flex flex-col gap-3 sm:flex-row">
+      <button type="button" onClick={downloadPdf} className="btn-primary px-5 py-3">
+        Telecharger la fiche
       </button>
-      <button onClick={printCard} className="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+      <button
+        type="button"
+        onClick={printCard}
+        className="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+      >
         Imprimer
       </button>
     </div>

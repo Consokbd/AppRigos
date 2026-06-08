@@ -12,7 +12,7 @@ const users = [
   },
   {
     id: 'operator-1',
-    name: 'Opérateur',
+    name: 'Operateur',
     email: process.env.OPERATOR_EMAIL ?? 'operator@app-rigos.local',
     password: process.env.OPERATOR_PASSWORD ?? 'Operator123!',
     role: 'OPERATOR',
