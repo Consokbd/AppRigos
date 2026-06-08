@@ -7,3 +7,6 @@ out
 coverage
 tsconfig.tsbuildinfo
 next-dev-*.log
+
+.vercel
+.env*
