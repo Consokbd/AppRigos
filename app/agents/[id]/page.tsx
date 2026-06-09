@@ -52,6 +52,9 @@ export default async function AgentDetailsPage({ params }: { params: Promise<{ i
               </div>
 
               <div className="flex flex-wrap gap-3">
+                <Link href={`/agents/${agent.id}/edit`} className="btn-primary">
+                  Modifier
+                </Link>
                 <Link href={`/cards/${agent.id}`} className="btn-primary">
                   Voir la carte
                 </Link>

@@ -28,7 +28,7 @@ export default async function CardPage({ params }: { params: Promise<{ id: strin
   }
 
   const fullName = `${agent.nom} ${agent.postnom ?? ''} ${agent.prenom ?? ''}`.trim()
-  const displayName = fullName.toUpperCase()
+  const displayName = `${agent.nom} ${agent.prenom ?? ''}`.trim().toUpperCase()
   const profileUrl = `${process.env.NEXTAUTH_URL ?? 'http://localhost:3000'}/profile/${agent.id}`
   const qrImage = agent.qrCode ?? (await createQRCode(profileUrl))
   const validityDate = new Date()
