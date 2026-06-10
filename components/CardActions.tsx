@@ -8,13 +8,39 @@ interface CardActionsProps {
 }
 
 export default function CardActions({ agentId }: CardActionsProps) {
+  async function waitForExportAssets(root: HTMLElement) {
+    await document.fonts?.ready
+
+    const images = Array.from(root.querySelectorAll('img'))
+    await Promise.all(
+      images.map((image) => {
+        if (image.complete) return Promise.resolve()
+
+        return new Promise<void>((resolve) => {
+          image.onload = () => resolve()
+          image.onerror = () => resolve()
+        })
+      }),
+    )
+  }
+
   async function downloadPdf() {
     const cardElement = document.getElementById('service-card')
     if (!cardElement) return
 
-    cardElement.classList.add('rigos-exporting')
+    const exportHost = document.createElement('div')
+    const exportCard = cardElement.cloneNode(true) as HTMLElement
+
+    exportHost.className = 'rigos-export-host'
+    exportCard.id = 'service-card-export'
+    exportCard.classList.add('rigos-exporting')
+    exportHost.appendChild(exportCard)
+    document.body.appendChild(exportHost)
+
     try {
-      const canvas = await html2canvas(cardElement, {
+      await waitForExportAssets(exportCard)
+
+      const canvas = await html2canvas(exportCard, {
         backgroundColor: '#F6F6F6',
         scale: 3,
         useCORS: true,
@@ -28,7 +54,7 @@ export default function CardActions({ agentId }: CardActionsProps) {
       pdf.addImage(imageData, 'PNG', 0, 0, 85.6, 54)
       pdf.save(`carte-${agentId}.pdf`)
     } finally {
-      cardElement.classList.remove('rigos-exporting')
+      exportHost.remove()
     }
   }
 

@@ -581,17 +581,17 @@
   top: 31%;
   width: 35.6%;
   display: grid;
-  gap: clamp(0.2rem, 1.5vw, 1.25rem);
+  gap: clamp(0.16rem, 1.22vw, 1rem);
   z-index: 3;
 }
 
 .rigos-card-details p {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
-  gap: clamp(0.24rem, 0.92vw, 0.92rem);
+  gap: clamp(0.2rem, 0.76vw, 0.76rem);
   align-items: baseline;
   margin: 0;
-  font-size: clamp(0.64rem, 2.55cqw, 1.92rem);
+  font-size: clamp(0.58rem, 2.16cqw, 1.62rem);
   line-height: 1.05;
 }
 
@@ -733,6 +733,17 @@
   box-shadow: none !important;
 }
 
+.rigos-export-host {
+  position: fixed;
+  left: -200vw;
+  top: 0;
+  width: 1120px;
+  height: 706px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
 @media (max-width: 640px) {
   .rigos-id-card {
     width: 100%;
@@ -746,8 +757,8 @@
   }
 
   .rigos-card-details p {
-    gap: 0.22rem;
-    font-size: clamp(0.56rem, 2.48cqw, 0.76rem);
+    gap: 0.18rem;
+    font-size: clamp(0.5rem, 2.18cqw, 0.68rem);
     line-height: 1.02;
   }
 
