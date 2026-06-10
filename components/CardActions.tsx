@@ -2,31 +2,45 @@
 
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
+import { useState } from 'react'
 
 interface CardActionsProps {
   agentId: string
 }
 
 export default function CardActions({ agentId }: CardActionsProps) {
+  const [isGenerating, setIsGenerating] = useState(false)
+
   async function waitForExportAssets(root: HTMLElement) {
     await document.fonts?.ready
 
     const images = Array.from(root.querySelectorAll('img'))
     await Promise.all(
-      images.map((image) => {
-        if (image.complete) return Promise.resolve()
+      images.map(async (image) => {
+        const src = image.getAttribute('src')
+        if (src && src.startsWith('/')) {
+          image.src = new URL(src, window.location.origin).toString()
+        }
 
-        return new Promise<void>((resolve) => {
-          image.onload = () => resolve()
-          image.onerror = () => resolve()
-        })
+        if (!image.complete || image.naturalWidth === 0) {
+          await new Promise<void>((resolve) => {
+            image.onload = () => resolve()
+            image.onerror = () => resolve()
+          })
+        }
+
+        await image.decode?.().catch(() => undefined)
       }),
     )
   }
 
   async function downloadPdf() {
+    if (isGenerating) return
+
     const cardElement = document.getElementById('service-card')
     if (!cardElement) return
+
+    setIsGenerating(true)
 
     const exportHost = document.createElement('div')
     const exportCard = cardElement.cloneNode(true) as HTMLElement
@@ -39,6 +53,7 @@ export default function CardActions({ agentId }: CardActionsProps) {
 
     try {
       await waitForExportAssets(exportCard)
+      await new Promise((resolve) => requestAnimationFrame(resolve))
 
       const canvas = await html2canvas(exportCard, {
         backgroundColor: '#F6F6F6',
@@ -55,6 +70,7 @@ export default function CardActions({ agentId }: CardActionsProps) {
       pdf.save(`carte-${agentId}.pdf`)
     } finally {
       exportHost.remove()
+      setIsGenerating(false)
     }
   }
 
@@ -64,8 +80,8 @@ export default function CardActions({ agentId }: CardActionsProps) {
 
   return (
     <div className="card-actions-center">
-      <button type="button" onClick={downloadPdf} className="btn-primary px-5 py-3">
-        Telecharger PDF
+      <button type="button" onClick={downloadPdf} disabled={isGenerating} className="btn-primary px-5 py-3 disabled:cursor-wait disabled:opacity-70">
+        {isGenerating ? 'Preparation...' : 'Telecharger PDF'}
       </button>
       <button
         type="button"
