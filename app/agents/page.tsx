@@ -88,7 +88,7 @@ export default async function AgentsPage({ searchParams }: { searchParams?: Prom
                 className="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
                 <option value="createdAt">Plus recents</option>
-                <option value="nom">Nom A-Z</option>
+                <option value="nom">Name A-Z</option>
                 <option value="status">Statut</option>
               </select>
               <button type="submit" className="btn-primary px-5 py-3">

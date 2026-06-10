@@ -64,17 +64,17 @@ export default function AgentForm({ action, initialValues, buttonLabel = 'Enregi
 
         <div className="agent-form-grid-2">
           <label className="block">
-            <span className="mb-2 block text-sm font-medium text-slate-700">Matricule</span>
+            <span className="mb-2 block text-sm font-medium text-slate-700">ID No</span>
             <input name="matricule" defaultValue={initialValues?.matricule} required className="agent-input" />
           </label>
 
           <label className="block">
-            <span className="mb-2 block text-sm font-medium text-slate-700">Fonction</span>
+            <span className="mb-2 block text-sm font-medium text-slate-700">Function</span>
             <input name="fonction" defaultValue={initialValues?.fonction} required className="agent-input" />
           </label>
 
           <label className="block">
-            <span className="mb-2 block text-sm font-medium text-slate-700">Nom</span>
+            <span className="mb-2 block text-sm font-medium text-slate-700">Name</span>
             <input name="nom" defaultValue={initialValues?.nom} required className="agent-input" />
           </label>
 

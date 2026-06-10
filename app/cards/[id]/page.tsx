@@ -75,8 +75,8 @@ export default async function CardPage({ params }: { params: Promise<{ id: strin
               </div>
 
               <div className="rigos-card-details">
-                <InfoLine label="Nom" value={displayName} />
-                <InfoLine label="Fonction" value={agent.fonction.toUpperCase()} />
+                <InfoLine label="Name" value={displayName} />
+                <InfoLine label="Function" value={agent.fonction.toUpperCase()} />
                 <InfoLine label="Contractor" value="RIGOS" />
                 <InfoLine label="Project" value={agent.service} />
               </div>
@@ -95,10 +95,10 @@ export default async function CardPage({ params }: { params: Promise<{ id: strin
                   <p className="rigos-footer-title">AGENT</p>
                   <div className="rigos-footer-rule" />
                   <p className="rigos-footer-matricule">
-                    Matricule : <strong>{agent.matricule}</strong>
+                    ID No : <strong>{agent.matricule}</strong>
                   </p>
                   <p className="rigos-footer-validity">
-                    RIGOS SARL - validite carte : <strong>{validUntil}</strong>
+                    RIGOS SARL - Card Validity : <strong>{validUntil}</strong>
                   </p>
                 </div>
               </div>

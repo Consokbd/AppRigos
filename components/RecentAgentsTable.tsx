@@ -48,10 +48,10 @@ export default function RecentAgentsTable() {
         <table className="min-w-full divide-y divide-slate-200">
           <thead className="bg-slate-50">
             <tr>
-              <th className="p-4 text-left text-sm font-semibold text-slate-700">Nom</th>
-              <th className="p-4 text-left text-sm font-semibold text-slate-700">Matricule</th>
+              <th className="p-4 text-left text-sm font-semibold text-slate-700">Name</th>
+              <th className="p-4 text-left text-sm font-semibold text-slate-700">ID No</th>
               <th className="p-4 text-left text-sm font-semibold text-slate-700">Service</th>
-              <th className="p-4 text-left text-sm font-semibold text-slate-700">Fonction</th>
+              <th className="p-4 text-left text-sm font-semibold text-slate-700">Function</th>
               <th className="p-4 text-left text-sm font-semibold text-slate-700">Statut</th>
               <th className="p-4 text-left text-sm font-semibold text-slate-700">Carte</th>
             </tr>

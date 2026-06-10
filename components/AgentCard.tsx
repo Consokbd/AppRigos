@@ -30,7 +30,7 @@ export default function AgentCard({ agent, deleteAction }: AgentCardProps) {
             <p className="agent-card-fonction">{agent.fonction}</p>
           </div>
           <p className="agent-card-matricule">
-            Matricule: <span className="font-semibold text-slate-900">{agent.matricule}</span>
+            ID No: <span className="font-semibold text-slate-900">{agent.matricule}</span>
           </p>
         </div>
 

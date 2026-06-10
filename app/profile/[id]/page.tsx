@@ -51,12 +51,12 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6">
               <h2 className="text-xl font-semibold text-slate-900">Informations de l'agent</h2>
               <ul className="mt-5 space-y-3 text-sm text-slate-600">
-                <li><span className="font-semibold text-slate-900">Matricule :</span> {agent.matricule}</li>
+                <li><span className="font-semibold text-slate-900">ID No :</span> {agent.matricule}</li>
                 <li><span className="font-semibold text-slate-900">Service :</span> {agent.service}</li>
                 <li><span className="font-semibold text-slate-900">Telephone :</span> {agent.telephone ?? 'Non renseigne'}</li>
                 <li><span className="font-semibold text-slate-900">Email :</span> {agent.email ?? 'Non renseigne'}</li>
                 <li><span className="font-semibold text-slate-900">Statut :</span> {agent.statut}</li>
-                <li><span className="font-semibold text-slate-900">Validite carte :</span> {validUntil}</li>
+                <li><span className="font-semibold text-slate-900">Card Validity :</span> {validUntil}</li>
               </ul>
             </div>
 

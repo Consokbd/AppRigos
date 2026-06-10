@@ -86,10 +86,10 @@ export default async function AgentDetailsPage({ params }: { params: Promise<{ i
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
-                <Info label="Matricule" value={agent.matricule} />
-                <Info label="Fonction" value={agent.fonction} />
+                <Info label="ID No" value={agent.matricule} />
+                <Info label="Function" value={agent.fonction} />
                 <Info label="Service" value={agent.service} />
-                <Info label="Validite estimee" value={validUntil} />
+                <Info label="Card Validity" value={validUntil} />
                 <Info label="Telephone" value={agent.telephone ?? 'Non renseigne'} />
                 <Info label="Email" value={agent.email ?? 'Non renseigne'} />
               </div>
