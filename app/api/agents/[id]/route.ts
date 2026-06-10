@@ -39,6 +39,7 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
       email: payload.email || null,
       photo: payload.photo || null,
       statut: payload.statut || 'ACTIF',
+      expiresAt: payload.expiresAt ? new Date(`${payload.expiresAt}T00:00:00.000Z`) : null,
     },
   })
 

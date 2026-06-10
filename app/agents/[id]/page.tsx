@@ -31,8 +31,10 @@ export default async function AgentDetailsPage({ params }: { params: Promise<{ i
   const fullName = `${agent.nom} ${agent.postnom ?? ''} ${agent.prenom ?? ''}`.trim()
   const profileUrl = `${process.env.NEXTAUTH_URL ?? 'http://localhost:3000'}/profile/${agent.id}`
   const qrImage = agent.qrCode ?? (await createQRCode(profileUrl))
-  const validityDate = new Date()
-  validityDate.setFullYear(validityDate.getFullYear() + 1)
+  const validityDate = agent.expiresAt ?? new Date()
+  if (!agent.expiresAt) {
+    validityDate.setFullYear(validityDate.getFullYear() + 1)
+  }
   const validUntil = validityDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' })
 
   return (

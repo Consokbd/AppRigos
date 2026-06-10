@@ -20,6 +20,7 @@ model Agent {
   photo     String?
   qrCode    String?
   statut    String   @default("ACTIF")
+  expiresAt DateTime?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

@@ -13,6 +13,7 @@ interface AgentFormValues {
   email?: string
   photo?: string
   statut?: string
+  expiresAt?: string
 }
 
 interface AgentFormProps {
@@ -141,6 +142,11 @@ export default function AgentForm({ action, initialValues, buttonLabel = 'Enregi
             <option value="ACTIF">ACTIF</option>
             <option value="INACTIF">INACTIF</option>
           </select>
+        </label>
+
+        <label className="block">
+          <span className="mb-2 block text-sm font-medium text-slate-700">Date d'expiration de la carte</span>
+          <input name="expiresAt" type="date" defaultValue={initialValues?.expiresAt} className="agent-input-muted" />
         </label>
       </div>
 

@@ -31,8 +31,10 @@ export default async function CardPage({ params }: { params: Promise<{ id: strin
   const displayName = `${agent.nom} ${agent.prenom ?? ''}`.trim().toUpperCase()
   const profileUrl = `${process.env.NEXTAUTH_URL ?? 'http://localhost:3000'}/profile/${agent.id}`
   const qrImage = agent.qrCode ?? (await createQRCode(profileUrl))
-  const validityDate = new Date()
-  validityDate.setFullYear(validityDate.getFullYear() + 1)
+  const validityDate = agent.expiresAt ?? new Date()
+  if (!agent.expiresAt) {
+    validityDate.setFullYear(validityDate.getFullYear() + 1)
+  }
   const validUntil = validityDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' })
 
   return (
@@ -61,7 +63,7 @@ export default async function CardPage({ params }: { params: Promise<{ id: strin
               <div className="rigos-card-dot-field" />
 
               <div className="rigos-card-logo">
-                <img src="/logo.jpeg" alt="RIGOS" />
+                <img src="/Logo_Rigos.png" alt="RIGOS" />
               </div>
 
               <div className="rigos-card-photo">

@@ -24,6 +24,7 @@ async function updateAgent(formData: FormData) {
   const email = formData.get('email') as string
   const photo = formData.get('photo') as string
   const statut = (formData.get('statut') as string) ?? 'ACTIF'
+  const expiresAt = formData.get('expiresAt') as string
 
   await prisma.agent.update({
     where: { id },
@@ -38,6 +39,7 @@ async function updateAgent(formData: FormData) {
       email: email || null,
       photo: photo || null,
       statut,
+      expiresAt: expiresAt ? new Date(`${expiresAt}T00:00:00.000Z`) : null,
     },
   })
 
@@ -96,6 +98,7 @@ export default async function EditAgentPage({ params }: { params: Promise<{ id: 
               email: agent.email ?? undefined,
               photo: agent.photo ?? undefined,
               statut: agent.statut,
+              expiresAt: agent.expiresAt ? agent.expiresAt.toISOString().slice(0, 10) : undefined,
             }}
             buttonLabel="Enregistrer les modifications"
           />

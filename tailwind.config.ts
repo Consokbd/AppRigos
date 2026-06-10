@@ -6,13 +6,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#1AA8C5',
-        secondary: '#0F4C81',
+        primary: '#159CAF',
+        secondary: '#05070A',
         success: '#16A34A',
-        surface: '#F3FBFC',
+        surface: '#F1FBFC',
       },
       boxShadow: {
-        soft: '0 10px 30px rgba(15, 76, 129, 0.12)',
+        soft: '0 10px 30px rgba(21, 156, 175, 0.14)',
       },
     },
   },

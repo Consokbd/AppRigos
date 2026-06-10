@@ -20,6 +20,7 @@ async function createAgent(formData: FormData) {
   const email = formData.get('email') as string
   const photo = formData.get('photo') as string
   const statut = (formData.get('statut') as string) ?? 'ACTIF'
+  const expiresAt = formData.get('expiresAt') as string
 
   const agent = await prisma.agent.create({
     data: {
@@ -33,6 +34,7 @@ async function createAgent(formData: FormData) {
       email: email || null,
       photo: photo || null,
       statut,
+      expiresAt: expiresAt ? new Date(`${expiresAt}T00:00:00.000Z`) : null,
     },
   })
 

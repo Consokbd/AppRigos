@@ -13,6 +13,7 @@ const agents = [
     telephone: '+243 810 000 001',
     email: 'jean.kabamba@rigos.com',
     statut: 'ACTIF',
+    expiresAt: new Date('2027-01-30T00:00:00.000Z'),
   },
   {
     matricule: 'RGS-002',
@@ -24,6 +25,7 @@ const agents = [
     telephone: '+243 810 000 002',
     email: 'grace.mutombo@rigos.com',
     statut: 'ACTIF',
+    expiresAt: new Date('2027-01-30T00:00:00.000Z'),
   },
   {
     matricule: 'RGS-003',
@@ -35,6 +37,7 @@ const agents = [
     telephone: '+243 810 000 003',
     email: null,
     statut: 'INACTIF',
+    expiresAt: new Date('2027-01-30T00:00:00.000Z'),
   },
 ]
 

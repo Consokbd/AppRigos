@@ -12,11 +12,24 @@ export default function CardActions({ agentId }: CardActionsProps) {
     const cardElement = document.getElementById('service-card')
     if (!cardElement) return
 
-    const canvas = await html2canvas(cardElement, { backgroundColor: '#ffffff', scale: 2 })
-    const imageData = canvas.toDataURL('image/png')
-    const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: [85.6, 54] })
-    pdf.addImage(imageData, 'PNG', 0, 0, 85.6, 54)
-    pdf.save(`carte-${agentId}.pdf`)
+    cardElement.classList.add('rigos-exporting')
+    try {
+      const canvas = await html2canvas(cardElement, {
+        backgroundColor: '#F6F6F6',
+        scale: 3,
+        useCORS: true,
+        width: 1120,
+        height: 706,
+        windowWidth: 1120,
+        windowHeight: 706,
+      })
+      const imageData = canvas.toDataURL('image/png')
+      const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: [85.6, 54] })
+      pdf.addImage(imageData, 'PNG', 0, 0, 85.6, 54)
+      pdf.save(`carte-${agentId}.pdf`)
+    } finally {
+      cardElement.classList.remove('rigos-exporting')
+    }
   }
 
   function printCard() {

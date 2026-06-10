@@ -15,10 +15,22 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
   }
 
   const fullName = `${agent.nom} ${agent.postnom ?? ''} ${agent.prenom ?? ''}`.trim()
+  const validityDate = agent.expiresAt ?? new Date()
+  if (!agent.expiresAt) {
+    validityDate.setFullYear(validityDate.getFullYear() + 1)
+  }
+  const validUntil = validityDate.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' })
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-100 via-white to-slate-100 px-4 py-10">
       <div className="mx-auto max-w-4xl rounded-[32px] border border-slate-200 bg-white p-8 shadow-soft">
+        <div className="mb-8 flex items-center gap-4 border-b border-slate-200 pb-6">
+          <img src="/Logo_Rigos.png" alt="RIGOS" className="h-14 w-auto object-contain" />
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-primary">RIGOS</p>
+            <p className="text-sm text-slate-500">Verification de carte de service</p>
+          </div>
+        </div>
         <div className="grid gap-8 lg:grid-cols-[240px_1fr]">
           <div className="rounded-3xl bg-primary p-6 text-white shadow-soft">
             <div className="h-40 w-40 overflow-hidden rounded-3xl bg-slate-100">
@@ -44,6 +56,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
                 <li><span className="font-semibold text-slate-900">Telephone :</span> {agent.telephone ?? 'Non renseigne'}</li>
                 <li><span className="font-semibold text-slate-900">Email :</span> {agent.email ?? 'Non renseigne'}</li>
                 <li><span className="font-semibold text-slate-900">Statut :</span> {agent.statut}</li>
+                <li><span className="font-semibold text-slate-900">Validite carte :</span> {validUntil}</li>
               </ul>
             </div>
 
