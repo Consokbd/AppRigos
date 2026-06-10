@@ -258,10 +258,185 @@
 .qr-generator { display:inline-flex; flex-direction:column; align-items:center; gap:0.75rem; border-radius:16px; border:1px solid var(--color-border); background:#fff; padding:1rem; box-shadow:0 6px 18px rgba(15,23,42,0.04) }
 .qr-generator img { max-width:100% }
 
+@media (max-width: 768px) {
+  .card-surface {
+    padding: 1.15rem;
+    border-radius: 18px;
+  }
+
+  .card-surface h1 {
+    font-size: clamp(1.65rem, 8vw, 2.25rem);
+    line-height: 1.08;
+  }
+
+  .card-surface h2 {
+    font-size: clamp(1.15rem, 5.5vw, 1.45rem);
+    line-height: 1.15;
+  }
+
+  .card-surface p {
+    overflow-wrap: anywhere;
+  }
+
+  .navbar-inner {
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .navbar-brand {
+    min-width: 0;
+    gap: 0.65rem;
+  }
+
+  .navbar-brand > div {
+    min-width: 0;
+  }
+
+  .navbar-logo {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 auto;
+  }
+
+  .navbar-title {
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+  }
+
+  .navbar-brand p:last-child {
+    max-width: 52vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .btn-logout {
+    flex: 0 0 auto;
+    padding: 0.48rem 0.72rem;
+    font-size: 0.82rem;
+  }
+
+  .btn-primary,
+  .btn-outline,
+  .agent-card-actions button {
+    width: 100%;
+    min-height: 2.65rem;
+    padding: 0.72rem 0.9rem;
+    text-align: center;
+  }
+
+  .agent-card {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .agent-card:hover {
+    transform: none;
+  }
+
+  .agent-card-meta,
+  .agent-card-service,
+  .agent-card-name,
+  .agent-card-fonction,
+  .agent-card-matricule {
+    min-width: 0;
+  }
+
+  .agent-card-service span:last-child,
+  .agent-card-name,
+  .agent-card-fonction,
+  .agent-card-matricule {
+    overflow-wrap: anywhere;
+  }
+
+  .agent-card-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .agent-card-actions > form {
+    grid-column: 1 / -1;
+  }
+
+  .agent-card-actions .rounded-full {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .agent-form-section {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .agent-form-actions {
+    justify-content: stretch;
+  }
+
+  .agent-input,
+  .agent-input-muted,
+  .agent-select {
+    min-height: 2.85rem;
+    font-size: 1rem;
+  }
+
+  .dashboard-header {
+    padding: 1.2rem;
+    border-radius: 18px;
+  }
+
+  .dashboard-header-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard-header-pill {
+    text-align: center;
+  }
+
+  .stat-item,
+  .dashboard-hero-card {
+    border-radius: 14px;
+    padding: 1rem;
+  }
+
+  .card-actions-center {
+    align-items: stretch;
+  }
+
+  .status-pill {
+    padding: 0.38rem 0.7rem;
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand p:last-child {
+    max-width: 46vw;
+    font-size: 0.78rem;
+  }
+
+  .btn-logout {
+    padding-inline: 0.6rem;
+  }
+
+  .agent-card-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .agent-card-actions .rounded-full,
+  .agent-card-actions > form {
+    grid-column: auto;
+  }
+}
+
 /* --- RIGOS PVC print card --- */
 .rigos-id-card {
   position: relative;
   isolation: isolate;
+  container-type: inline-size;
   width: min(100%, 1120px);
   aspect-ratio: 85.6 / 54;
   margin: 0 auto;
@@ -276,7 +451,7 @@
 .rigos-card-bg-top {
   position: absolute;
   left: 0;
-  top: -0.1%;
+  top: 0%;
   width: 28.46%;
   height: 44.75%;
   background: #E5E4E9;
@@ -401,19 +576,19 @@
   position: absolute;
   left: 32.6%;
   top: 31%;
-  width: 34.3%;
+  width: 35.6%;
   display: grid;
-  gap: clamp(0.42rem, 1.5vw, 1.25rem);
+  gap: clamp(0.2rem, 1.5vw, 1.25rem);
   z-index: 3;
 }
 
 .rigos-card-details p {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
-  gap: clamp(0.46rem, 0.92vw, 0.92rem);
+  gap: clamp(0.24rem, 0.92vw, 0.92rem);
   align-items: baseline;
   margin: 0;
-  font-size: clamp(1.05rem, 2.26vw, 1.92rem);
+  font-size: clamp(0.64rem, 2.55cqw, 1.92rem);
   line-height: 1.05;
 }
 
@@ -423,9 +598,14 @@
 }
 
 .rigos-card-details strong {
+  display: block;
   min-width: 0;
   font-weight: 900;
-  overflow-wrap: anywhere;
+  overflow: hidden;
+  overflow-wrap: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: normal;
   letter-spacing: 0;
 }
 
@@ -472,7 +652,7 @@
 
 .rigos-agent-icon {
   position: relative;
-  width: clamp(52px, 7.4vw, 82px);
+  width: clamp(36px, 7.4vw, 82px);
   aspect-ratio: 1;
   border-radius: 11px;
   background: #fff;
@@ -512,7 +692,7 @@
 }
 
 .rigos-footer-title {
-  font-size: clamp(1.1rem, 2.78vw, 2.35rem);
+  font-size: clamp(0.8rem, 2.78vw, 2.35rem);
   font-weight: 900;
   line-height: 1;
   letter-spacing: 0;
@@ -526,7 +706,7 @@
 }
 
 .rigos-footer-matricule {
-  font-size: clamp(0.92rem, 2.12vw, 1.8rem);
+  font-size: clamp(0.66rem, 2.12vw, 1.8rem);
   line-height: 1.05;
 }
 
@@ -537,9 +717,44 @@
 
 .rigos-footer-validity {
   margin-top: 2.6%;
-  font-size: clamp(0.86rem, 1.94vw, 1.65rem);
+  font-size: clamp(0.58rem, 1.94vw, 1.65rem);
   font-weight: 400;
   line-height: 1;
+}
+
+@media (max-width: 640px) {
+  .rigos-id-card {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .rigos-card-details {
+    left: 30.4%;
+    top: 30.3%;
+    width: 40.8%;
+  }
+
+  .rigos-card-details p {
+    gap: 0.22rem;
+    font-size: clamp(0.56rem, 2.48cqw, 0.76rem);
+    line-height: 1.02;
+  }
+
+  .rigos-card-qr {
+    right: 6.7%;
+    top: 26.6%;
+    width: 19.8%;
+    border-radius: 10px;
+  }
+
+  .rigos-card-footer {
+    grid-template-columns: 17% 1fr;
+    padding: 0 4.8%;
+  }
+
+  .rigos-footer-rule {
+    width: 62%;
+  }
 }
 
 @media print {
