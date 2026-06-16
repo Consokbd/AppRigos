@@ -20,9 +20,10 @@ interface AgentFormProps {
   action: (formData: FormData) => Promise<void>
   initialValues?: AgentFormValues & { id?: string }
   buttonLabel?: string
+  error?: string
 }
 
-export default function AgentForm({ action, initialValues, buttonLabel = 'Enregistrer' }: AgentFormProps) {
+export default function AgentForm({ action, initialValues, buttonLabel = 'Enregistrer', error }: AgentFormProps) {
   const [photoPreview, setPhotoPreview] = useState(initialValues?.photo ?? '')
 
   async function handlePhotoChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -55,6 +56,11 @@ export default function AgentForm({ action, initialValues, buttonLabel = 'Enregi
     <form action={action} className="agent-form">
       {initialValues?.id && <input type="hidden" name="id" value={initialValues.id} />}
       <input type="hidden" name="photo" value={photoPreview} />
+      {error && (
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+          {error}
+        </div>
+      )}
 
       <div className="agent-form-section">
         <div>
